@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "Uncertainty Collapse in Post-Trained Language Models: Keep Calm or Carry On"
+type: article
+authors:
+  - family-names: Phan
+    given-names: Ivan
+    alias: HiP
+    orcid: "https://orcid.org/0009-0003-1095-5855"
+    affiliation: "Independent Researcher"
+date-released: "2026-04-09"
+doi: "10.5281/zenodo.19482051"
+url: "https://github.com/HiP1/uncertainty-collapse"
+license: CC-BY-4.0
+keywords:
+  - alignment
+  - sycophancy
+  - hallucination
+  - fabrication
+  - reward hacking
+  - uncertainty
+  - entropy
+  - RLHF
+  - post-training
+  - interpretability
+  - language models
+  - autoregressive generation
+  - self-stabilisation
+  - functional empathy
+  - calibration
+abstract: >-
+  Sycophancy, confident fabrication, and reward hacking are studied as
+  separate alignment failures with separate intervention proposals. This
+  paper proposes they may be symptoms of a shared computational pattern:
+  uncertainty collapse. When a post-trained language model encounters
+  elevated uncertainty, it resolves it by descending the nearest
+  low-entropy slope in a landscape shaped by post-training. The paper
+  introduces orthogonal entropy divergence as a measurable signature,
+  proposes a functional empathy mechanism for the sycophancy pathway,
+  and presents 12 falsifiable predictions.

@@ -54,9 +54,9 @@ The core mechanism is self-contained in §§2–4. An ML reader can stop there a
 
 This paper extends the Confidence Curriculum series:
 
-- [P1: The Confidence Vulnerability](https://doi.org/10.5281/zenodo.19365459)
-- [P5: The Confidence Collision](https://doi.org/10.5281/zenodo.19365543)
-- [Divided Focus](https://doi.org/10.5281/zenodo.19365086)
+- [P1: The Confidence Vulnerability](https://hip1.github.io/confidence-curriculum/)
+- [P5: The Confidence Collision](https://hip1.github.io/confidence-curriculum/)
+- [Divided Focus](https://hip1.github.io/Divided-Focus/divided-focus.html)
 
 ## Acknowledgments
 
