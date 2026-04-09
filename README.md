@@ -46,7 +46,7 @@ The core mechanism is self-contained in §§2–4. An ML reader can stop there a
   author={Phan, Ivan},
   year={2026},
   note={Preprint. DOI: 10.5281/zenodo.19482051},
-  url={https://github.com/HiP1/uncertainty-collapse}
+  url={https://hip1.github.io/Uncertainty-Collapse/}
 }
 ```
 
