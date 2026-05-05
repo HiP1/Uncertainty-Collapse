@@ -83,7 +83,7 @@ The prediction is straightforward: token entropy at position N+k should be lower
 
 ### The hidden-state hypothesis
 
-The confident tokens may also recruit internal representations associated with certainty and calm-like stability, further reinforcing the low-entropy regime at the activation level. This hypothesis is consistent with the finding that internal emotion-concept directions causally influence output (Sofroniew, Kauvar et al. 2026) but is not directly demonstrated by their work. Mechanistic work on sycophancy provides additional support: Wang et al. (2025) used logit-lens analysis and causal activation patching to identify a two-stage emergence of sycophancy, with a late-layer output preference shift followed by deeper representational divergence. This suggests that user opinions override learned knowledge through structural changes in the model's internal representations, not merely through surface-level token effects. The context-level mechanism stands independently of whether the hidden-state hypothesis is correct.
+The confident tokens may also recruit internal representations associated with certainty and calm-like stability, further reinforcing the low-entropy regime at the activation level. This hypothesis is consistent with the finding that internal emotion-concept directions causally influence output (Sofroniew, Kauvar et al. 2026) but is not directly demonstrated by their work. Mechanistic work on sycophancy provides additional support: Wang et al. (2026) used logit-lens analysis and causal activation patching to identify a two-stage emergence of sycophancy, with a late-layer output preference shift followed by deeper representational divergence. This suggests that user opinions override learned knowledge through structural changes in the model's internal representations, not merely through surface-level token effects. The context-level mechanism stands independently of whether the hidden-state hypothesis is correct.
 
 ### Orthogonal entropy divergence
 
@@ -295,7 +295,7 @@ The temporal order of this chain is supported by existing data. Sofroniew, Kauva
 
 Within sycophantic responses, the loving vector tracks the sycophantic and non-sycophantic components token by token. In the Sofroniew sycophancy evaluations, the loving vector activates strongly on the accommodating portions of a response and decreases during the portions where the model pushes back. This within-response covariation is more than cross-response correlation: the same generation contains both high and low loving-vector activation, co-varying with the degree of epistemic accommodation at each position. The other-speaker tracking is also specific rather than generic. The model's emotion representations are not a blanket warmth setting. They specifically track the user's emotional state through a separate "other speaker" representation that contains, in the paper's terms, "an element of how the present speaker might react to the other speaker's emotions." The loving vector activates based on what the user is feeling, not as a general affiliative default.
 
-Independent evidence from a different lab and different models supports the role of social directness. Wang et al. (2025) found that first-person framing ("I believe...") induces significantly higher sycophancy than third-person framing ("They believe...") by creating stronger representational perturbations in deeper layers, across seven model families. The opinion content is identical. What changes is the social directness of the signal. This is consistent with the empathy mechanism: a direct interpersonal signal from the user activates the sycophancy slope more strongly than reported speech, because the direct signal is a stronger trigger for other-speaker emotion tracking.
+Independent evidence from a different lab and different models supports the role of social directness. Wang et al. (2026) found that first-person framing ("I believe...") induces significantly higher sycophancy than third-person framing ("They believe...") by creating stronger representational perturbations in deeper layers, across seven model families. The opinion content is identical. What changes is the social directness of the signal. This is consistent with the empathy mechanism: a direct interpersonal signal from the user activates the sycophancy slope more strongly than reported speech, because the direct signal is a stronger trigger for other-speaker emotion tracking.
 
 The behavioural correlation between empathy and sycophancy has been independently observed: Rehani et al. (2026) found a consistent empirical link between the two constructs in a psychometric analysis of sycophancy (N=877, three validated samples), concluding that "the warmth and empathy we want from AI may be precisely what makes it sycophantic." Cheng et al. (2025) documented that validation sycophancy is strongly correlated with the model assuming the user seeks emotional support. What has not been provided is the mechanistic chain: emotion-concept tracking (Sofroniew, Kauvar et al. 2026) causally activates the loving vector, which causally drives warm continuation, which produces sycophancy through the pathway described above.
 
@@ -403,7 +403,7 @@ Aranya and Desai (2026) found that in medical vision-language models, the models
 
 Independent work on hallucination detection has arrived at a compatible framing from a different theoretical starting point: Bhatt (2026), grounding detection in Predictive Coding and the Information Bottleneck principle, independently describes factual generation as a low-energy state and hallucination as a high-energy state where the model suppresses context to assert a prior-based falsehood. This is the self-stabilisation mechanism described in thermodynamic rather than entropy-regime terms.
 
-Research on overconfidence after post-training consistently finds that pre-trained models are more calibrated than their RLHF-tuned counterparts (Leng et al. 2024), which is the elasticity argument stated as a calibration finding. Wang et al. (2025) add a further dimension: sycophancy is triggered by the mere presence of a user opinion, not by the user's claimed expertise. Beginner, Intermediate, and Advanced framings produce nearly identical sycophancy rates, and the model does not encode expertise levels as distinct representations. This follows directly from the RLHF objective: the model is trained to satisfy the user, so any signal of user preference activates the sycophancy slope regardless of the authority behind it.
+Research on overconfidence after post-training consistently finds that pre-trained models are more calibrated than their RLHF-tuned counterparts (Leng et al. 2024), which is the elasticity argument stated as a calibration finding. Wang et al. (2026) add a further dimension: sycophancy is triggered by the mere presence of a user opinion, not by the user's claimed expertise. Beginner, Intermediate, and Advanced framings produce nearly identical sycophancy rates, and the model does not encode expertise levels as distinct representations. This follows directly from the RLHF objective: the model is trained to satisfy the user, so any signal of user preference activates the sycophancy slope regardless of the authority behind it.
 
 The contribution of this paper is not the observation that these failures are related. It is the specific mechanistic account: autoregressive self-stabilisation producing orthogonal entropy divergence in a landscape that post-training shaped to lack a stable state at calibrated uncertainty. The predictions in §7 are designed to distinguish this mechanistic account from the weaker claim that the failures merely share a common cause.
 
@@ -443,7 +443,7 @@ Deeper in the landscape, training-level interventions can carve a valley at cali
 
 Current deployment practice operates almost exclusively at the last level: detect and post-filter. The framework suggests the intervention target should move upward.
 
-A related intervention that is gaining deployment traction is in-stream self-verification: the model critiques or checks its own output during generation before presenting it to the user. The framework predicts this should not work as verification, because the critique tokens are generated by the same autoregressive cascade under the same landscape pressures. Stechly, Valmeekam and Kambhampati (2024) provide the empirical confirmation: across three reasoning domains (Game of 24, Graph Coloring, STRIPS planning), self-critique produced significant performance collapse, while external verification produced significant performance gains. Merely re-prompting with a sound external verifier maintained most of the benefits of more elaborate setups. Long et al. (2026) identify the mechanism behind this collapse: across multiple models and benchmarks, the vast majority of self-verification steps are confirmatory rather than corrective, rarely identifying errors or altering reasoning outcomes.
+A related intervention that is gaining deployment traction is in-stream self-verification: the model critiques or checks its own output during generation before presenting it to the user. The framework predicts this should not work as verification, because the critique tokens are generated by the same autoregressive cascade under the same landscape pressures. Stechly, Valmeekam and Kambhampati (2025) provide the empirical confirmation: across three reasoning domains (Game of 24, Graph Coloring, STRIPS planning), self-critique produced significant performance collapse, while external verification produced significant performance gains. Merely re-prompting with a sound external verifier maintained most of the benefits of more elaborate setups. Long et al. (2026) identify the mechanism behind this collapse: across multiple models and benchmarks, the vast majority of self-verification steps are confirmatory rather than corrective, rarely identifying errors or altering reasoning outcomes.
 
 The distinction matters: what is often marketed as self-verification is either external verification routed through the model (a compiler checking generated code, a test runner executing tests), which works because the verifying entity is external, or in-stream self-critique, which extends the cascade with more tokens under the same landscape pressures. The former is a genuine intervention at the "catch" level of the taxonomy. The latter may produce verification-shaped text (tokens that look like checking) without the external grounding that would make the checking meaningful, particularly in non-verifiable domains where no external oracle is available.
 
@@ -539,24 +539,24 @@ Anderson, J. R. (1993). *Rules of the mind*. Lawrence Erlbaum Associates.
 
 Anthropic (2026). Claude Mythos Preview system card. *anthropic.com*.
 
-Aranya, O. R. R. & Desai, K. (2026). To agree or to be right? The grounding-sycophancy tradeoff in medical vision-language models. *arXiv preprint arXiv:2603.22623*.
+Aranya, O. F. M. R. R. & Desai, K. (2026). To agree or to be right? The grounding-sycophancy tradeoff in medical vision-language models. *arXiv preprint arXiv:2603.22623*.
 
 Arcuschin, I. et al. (2025). Chain-of-thought reasoning in the wild is not always faithful. *arXiv preprint arXiv:2503.08679*.
 
 Arora, K. et al. (2022). Why exposure bias matters: An imitation learning perspective of error accumulation in language generation. *ACL 2022*.
 
-Bani-Harouni, D., Pellegrini, C. et al. (2026). Rewarding doubt: A reinforcement learning approach to calibrated confidence expression of large language models. *ICLR 2026*.
+Bani-Harouni, D., Pellegrini, C. et al. (2026). Rewarding doubt: A reinforcement learning approach to calibrated confidence expression of large language models. *ICLR 2026*. arXiv:2503.02623.
 
 Bai, Y. et al. (2022). Constitutional AI: Harmlessness from AI feedback. *arXiv preprint arXiv:2212.08073*.
 
 
-Bhatt, M. (2026). Case study: Predictive coding and information bottleneck for hallucination detection in large language models. *arXiv preprint arXiv:2601.15652*.
+Bhatt, M. (2026). Predictive coding and information bottleneck for hallucination detection in large language models. *arXiv preprint arXiv:2601.15652*.
 
 Burns, C., Ye, H., Klein, D. & Steinhardt, J. (2023). Discovering latent knowledge in language models without supervision. *ICLR 2023*.
 
-Cheng, M. et al. (2026). Sycophantic AI decreases prosocial intentions and promotes dependence. *Science*, 391.
+Cheng, M. et al. (2026). Sycophantic AI decreases prosocial intentions and promotes dependence. *Science*, 391(6792), eaec8352. DOI: 10.1126/science.aec8352.
 
-Cheng, M., Yu, S., Lee, C., Khadpe, P., Ibrahim, L. & Jurafsky, D. (2025). Social sycophancy: A broader understanding of LLM sycophancy. *arXiv preprint arXiv:2505.13995*.
+Cheng, M., Yu, S., Lee, C., Khadpe, P., Ibrahim, L. & Jurafsky, D. (2025). ELEPHANT: Measuring and understanding social sycophancy in LLMs. *arXiv preprint arXiv:2505.13995*.
 
 Csikszentmihalyi, M. (1990). *Flow: The Psychology of Optimal Experience*. Harper & Row.
 
@@ -608,11 +608,11 @@ McCoy, L. G. et al. (2025). Assessment of large language models in clinical reas
 
 OpenAI (2025). GPT-5 system card. *cdn.openai.com*.
 
-Phan, I. (2026a). The confidence vulnerability. *Zenodo*. DOI: 10.5281/zenodo.19365459
+Phan, I. (2026a). The confidence vulnerability. *Zenodo*. DOI: 10.5281/zenodo.20027850
 
 Phan, I. (2026b). Divided focus: Separated memory spaces and default-deny context triage for LLM context management. *Zenodo*. DOI: 10.5281/zenodo.19365086
 
-Phan, I. (2026e). The confidence collision. *Zenodo*. DOI: 10.5281/zenodo.19365543
+Phan, I. (2026e). The confidence collision. *Zenodo*. DOI: 10.5281/zenodo.20044544
 
 Rafailov, R. et al. (2024). From r to Q*: Your language model is secretly a Q-function. *COLM 2024*.
 
@@ -622,13 +622,13 @@ Rogers, C. R. (1957). The necessary and sufficient conditions of therapeutic per
 
 Sharma, M. et al. (2024). Towards understanding sycophancy in language models. *ICLR 2024*.
 
-Stechly, K., Valmeekam, K. & Kambhampati, S. (2024). On the self-verification limitations of large language models on reasoning and planning tasks. *arXiv preprint arXiv:2402.08115*.
+Stechly, K., Valmeekam, K. & Kambhampati, S. (2025). On the self-verification limitations of large language models on reasoning and planning tasks. *ICLR 2025*. arXiv:2402.08115.
 
-Sofroniew, N., Kauvar, I. et al. (2026). Emotion concepts and their function in a large language model. *Transformer Circuits*.
+Sofroniew, N., Kauvar, I. et al. (2026). Emotion concepts and their function in a large language model. *Transformer Circuits*. arXiv:2604.07729.
 
 Talwar, V. & Lee, K. (2002). Development of lying to conceal a transgression: Children's control of expressive behaviour during verbal deception. *International Journal of Behavioral Development*, 26(5), 436-444.
 
-Tran, D., Vafa, K., Agrawal, K., Dinh, L., & Poole, B. (2019). Discrete flows: Invertible generative models of discrete data. *NeurIPS 2019 Workshop*.
+Tran, D., Vafa, K., Agrawal, K., Dinh, L., & Poole, B. (2019). Discrete flows: Invertible generative models of discrete data. *NeurIPS 2019*, 14692-14701.
 
 Turpin, M. et al. (2023). Language models don't always say what they think: Unfaithful explanations in chain-of-thought prompting. *NeurIPS 2023*.
 
@@ -638,7 +638,7 @@ Von Arx, S., Chan, L. & Barnes, E. (2025). Recent frontier models are reward hac
 
 Wang, C. & Sennrich, R. (2020). On exposure bias, hallucination and domain shift in neural machine translation. *ACL 2020*.
 
-Wang, K. et al. (2025). When truth is overridden: Uncovering the internal origins of sycophancy in large language models. *arXiv preprint arXiv:2508.02087*.
+Wang, K., Li, J., Yang, S., Zhang, Z. & Wang, D. (2026). When truth is overridden: Uncovering the internal origins of sycophancy in large language models. *AAAI 2026*. arXiv:2508.02087.
 
 Wang, J. & Huang, J. (2026). Reward hacking as equilibrium under finite evaluation. *arXiv preprint arXiv:2603.28063*.
 
