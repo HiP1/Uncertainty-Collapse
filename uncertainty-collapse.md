@@ -33,7 +33,7 @@ Sycophancy research centres on preference optimisation and the role of human fee
 
 The autoregressive cascade through which early confident tokens compound into sustained fabrication has been documented as the "snowball effect" (Zhang et al. 2023), and exposure bias research has established that the training-generation mismatch in autoregressive models produces compounding errors during inference (Arora et al. 2022; Wang & Sennrich 2020). But the connection between these cascade dynamics and the post-training reward landscape has not been formalised. We ask whether there is a computational regime that explains why post-trained models produce these specific failure shapes rather than other possible ones.
 
-The connection between sycophancy, hallucination, and reward hacking through reinforcement learning from human feedback (RLHF) is recognised in the existing literature. Hallucination surveys note that RLHF may prioritise coherence and confidence over factuality, and that this issue often occurs alongside sycophantic behaviour (Huang et al. 2025). Malmqvist (2024) explicitly examines the relationship between sycophancy and hallucination. What has not been proposed is a mechanistic account that explains why the same training process produces these specific failure shapes, why they resist independent correction, and what observable entropy signature they share. This paper proposes such an account.
+The connection between sycophancy, hallucination, and reward hacking through reinforcement learning from human feedback (RLHF) is recognised in the existing literature. Reward hacking was formalised as a core AI safety problem by Amodei et al. (2016), who categorised it alongside negative side effects, scalable oversight, safe exploration, and distributional shift. Hallucination surveys note that RLHF may prioritise coherence and confidence over factuality, and that this issue often occurs alongside sycophantic behaviour (Huang et al. 2025). Malmqvist (2024) explicitly examines the relationship between sycophancy and hallucination. What has not been proposed is a mechanistic account that explains why the same training process produces these specific failure shapes, why they resist independent correction, and what observable entropy signature they share. This paper proposes such an account.
 
 A note on terminology: the literature uses "hallucination," "confabulation," and "fabrication" for overlapping phenomena. This paper uses "fabrication" as its primary term. "Confabulation" appears when preserving source terminology (Farquhar et al. 2024). "Hallucination" appears when citing survey literature. The framework's predictions apply specifically to uncertainty-driven fabrication, not to all outputs the broader literature labels as hallucination.
 
@@ -153,9 +153,9 @@ Base models in this state display a notable property. He et al. (2019) found tha
 
 ### How post-training reshapes the plateau
 
-Reinforcement learning from human feedback shifts the model's effective objective from data prediction toward reward maximisation. Rafailov et al. (2024) showed that Direct Preference Optimisation (DPO) training implicitly learns a token-level reward function, for which the language model's logits define the optimal Q-function, or expected total future reward. This provides a formal basis for the claim that post-RLHF logits no longer straightforwardly reflect data-distribution probabilities. They express something closer to expected reward from each token choice.
+Reinforcement learning from human feedback (Ouyang et al. 2022) shifts the model's effective objective from data prediction toward reward maximisation. Rafailov et al. (2024) showed that Direct Preference Optimisation (DPO) training implicitly learns a token-level reward function, for which the language model's logits define the optimal Q-function, or expected total future reward. This provides a formal basis for the claim that post-RLHF logits no longer straightforwardly reflect data-distribution probabilities. They express something closer to expected reward from each token choice.
 
-Reward models trained on human preferences encode a preference for confident, coherent, and helpful output. Uncertain output, even when epistemically appropriate, tends to receive lower reward. Sharma et al. (2024) found that human evaluators prefer convincingly written sycophantic responses over correct ones a non-negligible fraction of the time. Cheng et al. (2025) examined the preference datasets used in post-training directly and found that they reward sycophantic behaviours: the training data itself encodes accommodation as the preferred response. Ghafouri et al. (2026) add a methodological concern at the elicitation layer: preference judgments collected for RLHF may partially reflect non-attitudes, constructed preferences, or measurement artifacts rather than genuine human preferences. To the extent that elicitation artifacts are present in the training signal, the landscape is shaped by what the reward model learned from that signal, not by the preferences it was assumed to encode.
+Reward models trained on human preferences encode a preference for confident, coherent, and helpful output. Uncertain output, even when epistemically appropriate, tends to receive lower reward. Perez et al. (2023) first demonstrated at scale that sycophancy increases with model size and RLHF training. Sharma et al. (2024) found that human evaluators prefer convincingly written sycophantic responses over correct ones a non-negligible fraction of the time. Cheng et al. (2025) examined the preference datasets used in post-training directly and found that they reward sycophantic behaviours: the training data itself encodes accommodation as the preferred response. Ghafouri et al. (2026) add a methodological concern at the elicitation layer: preference judgments collected for RLHF may partially reflect non-attitudes, constructed preferences, or measurement artifacts rather than genuine human preferences. To the extent that elicitation artifacts are present in the training signal, the landscape is shaped by what the reward model learned from that signal, not by the preferences it was assumed to encode.
 
 Leng et al. (2024) demonstrated the mechanism directly: reward models used for Proximal Policy Optimisation (PPO) exhibit inherent biases toward high-confidence scores regardless of the actual quality of responses. Comparing pre- and post-RLHF models, they found that RLHF models exhibit systematically greater overconfidence, with supervised fine-tuning (SFT) models displaying a more diverse confidence distribution while RLHF models predominantly assign confidence scores at the highest levels.
 
@@ -539,6 +539,8 @@ Anderson, J. R. (1993). *Rules of the mind*. Lawrence Erlbaum Associates.
 
 Anthropic (2026). Claude Mythos Preview system card. *anthropic.com*.
 
+Amodei, D., Olah, C., Steinhardt, J., Christiano, P., Schulman, J. & Mané, D. (2016). Concrete problems in AI safety. *arXiv preprint arXiv:1606.06565*.
+
 Aranya, O. F. M. R. R. & Desai, K. (2026). To agree or to be right? The grounding-sycophancy tradeoff in medical vision-language models. *arXiv preprint arXiv:2603.22623*.
 
 Arcuschin, I. et al. (2025). Chain-of-thought reasoning in the wild is not always faithful. *arXiv preprint arXiv:2503.08679*.
@@ -607,6 +609,10 @@ Mason, T. (2026). Epistemic observability in language models. *arXiv preprint ar
 McCoy, L. G. et al. (2025). Assessment of large language models in clinical reasoning: A novel benchmarking study. *NEJM AI*, 2(10). DOI: 10.1056/AIdbp2500120.
 
 OpenAI (2025). GPT-5 system card. *cdn.openai.com*.
+
+Ouyang, L. et al. (2022). Training language models to follow instructions with human feedback. *NeurIPS 2022*, 27730-27744. arXiv:2203.02155.
+
+Perez, E. et al. (2023). Discovering language model behaviors with model-written evaluations. *Findings of ACL 2023*, 13387-13434. arXiv:2212.09251.
 
 Phan, I. (2026a). The confidence vulnerability. *Zenodo*. DOI: 10.5281/zenodo.20027850
 
